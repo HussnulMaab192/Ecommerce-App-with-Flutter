@@ -9,6 +9,8 @@ import '../../lists.dart';
 import '../../widgets_common/custom_button.dart';
 import '../../widgets_common/responsive_height.dart';
 
+import '../home_screens/home.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -39,7 +41,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: TextButton(
                         onPressed: () {}, child: forgetPassword.text.make())),
                 customButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => const Home());
+                  },
                   textcolor: Colors.white,
                   title: login,
                   buttonColor: redColor,
