@@ -57,3 +57,9 @@ const privacyPolicy = "Privacy Policy";
 const returnPolicy = "Return Policy";
 const supportPolicy = "Support Policy";
 const productYouMayAlsoLike = "Products You May Also Like";
+
+// Profiles Strings
+
+const wishList = "Wish List";
+const orders = "Orders";
+const messages = "Messages";

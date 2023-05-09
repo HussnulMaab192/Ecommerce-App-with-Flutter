@@ -11,7 +11,12 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.yellow,
+      color: Colors.white,
+      child: "cart is empty"
+          .text
+          .fontFamily(semibold)
+          .color(darkFontGrey)
+          .makeCentered(),
     );
   }
 }
