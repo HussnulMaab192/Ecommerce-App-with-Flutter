@@ -1,10 +1,10 @@
 import 'package:flutter_amazon/consts/consts.dart';
 import 'package:flutter_amazon/controllers/home_controller.dart';
-import 'package:flutter_amazon/views/auth_screens/profile_screens/profile_screen.dart';
+import 'package:flutter_amazon/views/profile_screens/profile_screen.dart';
 import 'package:flutter_amazon/views/home_screens/home_screen.dart';
 import 'package:get/get.dart';
 
-import '../auth_screens/category_screens/category_screen.dart';
+import '../category_screens/category_screen.dart';
 import '../cart_screens/cart_screen.dart';
 
 class Home extends StatelessWidget {

@@ -35,3 +35,25 @@ const boysGlasses = "Boys Glasses ";
 const tShirts = "T Shirts";
 const girlsDresses = "Girls Dresses";
 const featureProduct = "Feature Product";
+
+//  Category String
+const womenClothing = "Women Clothing";
+const menClothingFashion = "Men Clothing";
+const compAccess = "Computer Accessories";
+const autoMobile = "Auto Mobiles";
+const kidtoys = "Kid Toys";
+const sports = "Sports";
+const cosmetics = "Cosmetics";
+const cellphones = "Cell Phones";
+const furniture = "Furniture";
+const drillingMachine = "Drilling Machine";
+
+// Item Details Strings
+
+const video = "Video";
+const reviews = "Reviews";
+const sellerPolicy = "Seller Policy";
+const privacyPolicy = "Privacy Policy";
+const returnPolicy = "Return Policy";
+const supportPolicy = "Support Policy";
+const productYouMayAlsoLike = "Products You May Also Like";
