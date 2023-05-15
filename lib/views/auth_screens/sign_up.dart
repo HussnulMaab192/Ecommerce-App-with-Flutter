@@ -1,3 +1,5 @@
+import 'package:flutter_amazon/controllers/authController.dart';
+import 'package:flutter_amazon/views/home_screens/home.dart';
 import 'package:get/get.dart';
 
 import '../../consts/consts.dart';
@@ -16,6 +18,13 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   bool ischecked = false;
+
+  var controller = Get.put(AuthController());
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return bgWidget(Scaffold(
@@ -28,13 +37,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
               appLogoContainer(),
               myCommonheight(0.06),
               Column(children: [
-                customTextField(title: name, hint: nameHint),
+                customTextField(
+                    ispass: false,
+                    title: name,
+                    hint: nameHint,
+                    controller: nameController),
                 myCommonheight(0.01),
-                customTextField(title: email, hint: emailHint),
+                customTextField(
+                    ispass: false,
+                    title: email,
+                    hint: emailHint,
+                    controller: emailController),
                 myCommonheight(0.01),
-                customTextField(title: password, hint: passwordHint),
+                customTextField(
+                    ispass: true,
+                    title: password,
+                    hint: passwordHint,
+                    controller: passwordController),
                 myCommonheight(0.01),
-                customTextField(title: retypePassword, hint: passwordHint),
+                customTextField(
+                    ispass: true,
+                    title: retypePassword,
+                    hint: passwordHint,
+                    controller: confirmController),
                 Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
@@ -86,7 +111,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 myCommonheight(0.005),
                 customButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    if (ischecked == true) {
+                      try {
+                        await controller
+                            .signUpMethod(
+                                email: emailController.text,
+                                password: passwordController.text)
+                            .then((value) {
+                          return controller.storeUserData(
+                              name: nameController.text,
+                              email: emailController.text,
+                              password: passwordController.text);
+                        }).then((value) {
+                          VxToast.show(context, msg: loggedIn);
+                          Get.offAll(() => const Home());
+                        });
+                      } catch (e) {
+                        auth.signOut();
+                        VxToast.show(context, msg: loggedOut);
+                      }
+                    }
+                  },
                   textcolor: ischecked == true ? Colors.white : redColor,
                   title: signUp,
                   buttonColor: ischecked == true ? redColor : lightGrey,

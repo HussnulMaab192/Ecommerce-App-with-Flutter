@@ -1,7 +1,7 @@
+import 'package:flutter_amazon/views/auth_screens/login_screen.dart';
 import 'package:flutter_amazon/widgets_common/app_logo_widget.dart';
 import 'package:get/get.dart';
 import '../../consts/consts.dart';
-import '../auth_screens/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

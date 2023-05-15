@@ -63,3 +63,8 @@ const productYouMayAlsoLike = "Products You May Also Like";
 const wishList = "Wish List";
 const orders = "Orders";
 const messages = "Messages";
+
+// Logged In
+
+const loggedIn = "Logged In Successfully";
+const loggedOut = "Logged Out Successfully";

@@ -32,9 +32,10 @@ class _LoginScreenState extends State<LoginScreen> {
               "Log in to $appname".text.fontFamily(bold).white.size(16).make(),
               myCommonheight(0.02),
               Column(children: [
-                customTextField(title: email, hint: emailHint),
+                customTextField(title: email, hint: emailHint, ispass: false),
                 myCommonheight(0.02),
-                customTextField(title: password, hint: passwordHint),
+                customTextField(
+                    title: password, hint: passwordHint, ispass: true),
                 myCommonheight(0.01),
                 Align(
                     alignment: Alignment.centerRight,
