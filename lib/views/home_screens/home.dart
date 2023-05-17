@@ -7,8 +7,20 @@ import 'package:get/get.dart';
 import '../category_screens/category_screen.dart';
 import '../cart_screens/cart_screen.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    // checkIsLoggedIn();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,3 +78,11 @@ class Home extends StatelessWidget {
     );
   }
 }
+                    // as i am checking the user from fire base so i dont have need of
+                    // shared preferance.but the below code is working fine 
+
+// checkIsLoggedIn() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   await prefs.setBool('isLoggedIn', true);
+//   print("value of isLoggedin is true");
+// }
