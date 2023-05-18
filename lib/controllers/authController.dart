@@ -7,6 +7,24 @@ import 'package:get/get.dart';
 
 class AuthController extends GetxController {
   bool isLoader = false;
+  bool isButtonDisabled = false;
+
+  Future handleForgotPassword({required email}) async {
+    if (isButtonDisabled) {
+      return; // Prevent multiple clicks while button is disabled
+    }
+
+    isButtonDisabled = true;
+
+    update();
+
+    await forgotPassword(email: email);
+
+    // Delay for 10 seconds
+
+    isButtonDisabled = false;
+    update();
+  }
 
   updateLoder() {
     isLoader = !isLoader;
@@ -98,6 +116,19 @@ class AuthController extends GetxController {
       Get.offAll(() => const LoginScreen());
     } on FirebaseException catch (e) {
       Get.snackbar("Error", e.toString());
+    }
+  }
+
+// forgot password
+  Future forgotPassword({required String email}) async {
+    updateLoder();
+    try {
+      await auth.sendPasswordResetEmail(email: email);
+      Get.snackbar("Message", "Please check your email ");
+      updateLoder();
+    } on FirebaseException catch (e) {
+      Get.snackbar("Error", e.message!);
+      updateLoder();
     }
   }
 

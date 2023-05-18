@@ -1,4 +1,5 @@
 import 'package:flutter_amazon/consts/consts.dart';
+import 'package:flutter_amazon/views/auth_screens/forget_passwd.dart';
 import 'package:flutter_amazon/views/auth_screens/sign_up.dart';
 import 'package:flutter_amazon/widgets_common/app_logo_widget.dart';
 import 'package:flutter_amazon/widgets_common/bg_widget.dart';
@@ -55,7 +56,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                          onPressed: () {}, child: forgetPassword.text.make())),
+                          onPressed: () async {
+                            await Get.to(const ForgetPasswordScreen());
+                          },
+                          child: forgetPassword.text.make())),
                   ctr.isLoader
                       ? const Center(
                           child: CircularProgressIndicator(color: redColor))
