@@ -70,7 +70,7 @@ class AuthController extends GetxController {
           email: email,
           context: context,
           password: password,
-          uid: userCredential.user!.uid);
+          uid: auth.currentUser!.uid);
 
       await sendVerification(context);
       updateLoder();
@@ -92,14 +92,16 @@ class AuthController extends GetxController {
     context,
   }) {
     try {
-      DocumentReference store =
-          firestore.collection(usersCollection).doc(currentUser!.uid);
+      DocumentReference store = firestore.collection(usersCollection).doc(uid);
       store.set({
         'name': name,
         'password': password,
         'email': email,
         'imageUrl': "",
         "uid": uid,
+        "cart_count": "00",
+        "order_count": "00",
+        "whishList_count": "00",
       });
     } on FirebaseAuthException catch (err) {
       VxToast.show(context, msg: err.toString());
