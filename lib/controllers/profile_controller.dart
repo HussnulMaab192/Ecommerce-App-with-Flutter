@@ -15,6 +15,7 @@ class ProfileController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController oldPasswordController = TextEditingController();
   TextEditingController newPasswordController = TextEditingController();
+
   changeProfilePic() async {
     try {
       final picker = ImagePicker();

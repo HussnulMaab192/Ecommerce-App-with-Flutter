@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_amazon/consts/consts.dart';
 import 'package:flutter_amazon/controllers/profile_controller.dart';
+import 'package:flutter_amazon/views/profile_screens/profile_screen.dart';
 import 'package:flutter_amazon/widgets_common/bg_widget.dart';
 import 'package:flutter_amazon/widgets_common/custom_button.dart';
 import 'package:flutter_amazon/widgets_common/responsive_height.dart';
@@ -14,6 +15,7 @@ class EditProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(Colors.purple.value);
     var controller = Get.find<ProfileController>();
 
     return bgWidget(Scaffold(
@@ -94,19 +96,23 @@ class EditProfile extends StatelessWidget {
                           }
 
                           if (data['password'] ==
-                              controller.newPasswordController.text) {
+                              controller.oldPasswordController.text) {
                             await controller.changeAuthPassword(
                                 data['email'],
-                                data['email'],
+                                data['password'],
                                 controller.newPasswordController.text);
 
                             await controller.updateProfile(
                                 controller.nameController.text,
                                 controller.newPasswordController.text,
                                 controller.profileImageLink);
+                            controller.newPasswordController.clear();
+                            controller.oldPasswordController.clear();
+
                             Get.snackbar(
-                                "Message", "Image Uploaded Successfully",
+                                "Message", "Profile Updated Successfully",
                                 colorText: whiteColor);
+                            Get.off(const ProfileScreen());
                           } else {
                             Get.snackbar(
                                 "Alert!!", "Old Password is not Correct.",

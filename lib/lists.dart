@@ -33,18 +33,19 @@ List featuredImages1 = [imgS1, imgS2, imgS3];
 List featuredImages2 = [imgS4, imgS5, imgS6];
 
 const categoriesList = [
+  womenClothing,
   menClothingFashion,
   compAccess,
   autoMobile,
   kidtoys,
   sports,
   cellphones,
-  cosmetics,
-  drillingMachine,
+  jewelry,
   furniture,
 ];
 
 const categoriesImages = [
+  imgS10,
   imgFc1,
   imgFc2,
   imgFc3,
@@ -52,7 +53,6 @@ const categoriesImages = [
   imgFc5,
   imgFc6,
   imgFc7,
-  imgFc8,
   imgFc9,
 ];
 const itemsButtonDeailsList = [

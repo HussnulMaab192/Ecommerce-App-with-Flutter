@@ -39,16 +39,15 @@ const girlsDresses = "Girls Dresses";
 const featureProduct = "Feature Product";
 
 //  Category String
-const womenClothing = "Women Clothing";
-const menClothingFashion = "Men Clothing";
-const compAccess = "Computer Accessories";
-const autoMobile = "Auto Mobiles";
-const kidtoys = "Kid Toys";
+const womenClothing = "Women Dress";
+const menClothingFashion = "Men Clothing & Fashion";
+const compAccess = "Computer & Accessories";
+const autoMobile = "Automobiles";
+const kidtoys = "Kid & Toys";
 const sports = "Sports";
-const cosmetics = "Cosmetics";
-const cellphones = "Cell Phones";
+const jewelry = "Jewelery";
+const cellphones = "Cellphone & Tab";
 const furniture = "Furniture";
-const drillingMachine = "Drilling Machine";
 
 // Item Details Strings
 

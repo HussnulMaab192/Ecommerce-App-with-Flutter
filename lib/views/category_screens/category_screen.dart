@@ -1,4 +1,5 @@
 import 'package:flutter_amazon/consts/consts.dart';
+import 'package:flutter_amazon/controllers/product_controller.dart';
 import 'package:flutter_amazon/lists.dart';
 import 'package:flutter_amazon/views/category_screens/category_details.dart';
 import 'package:flutter_amazon/widgets_common/bg_widget.dart';
@@ -15,6 +16,7 @@ class CategoryScreen extends StatefulWidget {
 class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(ProductController());
     return bgWidget(Scaffold(
       appBar: AppBar(title: category.text.white.fontFamily(bold).make()),
       body: Container(
@@ -51,6 +53,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 .outerShadowSm
                 .make()
                 .onTap(() {
+              controller.getSubCategories(categoriesList[index]);
+              print("the title here is :${categoriesList[index]}");
               Get.to(CategoriesDetails(title: categoriesList[index]));
             });
           },
