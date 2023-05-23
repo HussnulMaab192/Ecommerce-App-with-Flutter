@@ -4,6 +4,7 @@ import 'package:flutter_amazon/views/profile_screens/profile_screen.dart';
 import 'package:flutter_amazon/views/home_screens/home_screen.dart';
 import 'package:get/get.dart';
 
+import '../../widgets_common/dialgoue.dart';
 import '../category_screens/category_screen.dart';
 import '../cart_screens/cart_screen.dart';
 
@@ -57,23 +58,35 @@ class _HomeState extends State<Home> {
       const CartScreen(),
       const ProfileScreen()
     ];
-    return Scaffold(
-      body: Obx(
-        () => Column(
-          children: [Expanded(child: navBarPages[controller.navIndex.value])],
+    return WillPopScope(
+      onWillPop: () async {
+        showDialog(
+          barrierDismissible: false,
+          context: context,
+          builder: (context) {
+            return exitDialouge(context);
+          },
+        );
+        return false;
+      },
+      child: Scaffold(
+        body: Obx(
+          () => Column(
+            children: [Expanded(child: navBarPages[controller.navIndex.value])],
+          ),
         ),
-      ),
-      bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
-            currentIndex: controller.navIndex.value,
-            selectedItemColor: redColor,
-            selectedLabelStyle: const TextStyle(fontFamily: semibold),
-            backgroundColor: Colors.white,
-            type: BottomNavigationBarType.fixed,
-            onTap: (value) {
-              controller.navIndex.value = value;
-            },
-            items: navBarItems),
+        bottomNavigationBar: Obx(
+          () => BottomNavigationBar(
+              currentIndex: controller.navIndex.value,
+              selectedItemColor: redColor,
+              selectedLabelStyle: const TextStyle(fontFamily: semibold),
+              backgroundColor: Colors.white,
+              type: BottomNavigationBarType.fixed,
+              onTap: (value) {
+                controller.navIndex.value = value;
+              },
+              items: navBarItems),
+        ),
       ),
     );
   }
