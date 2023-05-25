@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:flutter_amazon/consts/consts.dart';
 import 'package:flutter_amazon/models/category_model.dart';
 import 'package:get/get.dart';
 
@@ -38,5 +39,26 @@ class ProductController extends GetxController {
     for (var e in s[0].subcategory) {
       subCat.add(e);
     }
+  }
+
+  addToCart({
+    required title,
+    required img,
+    required sellername,
+    required clor,
+    required qty,
+    required tPrice,
+  }) async {
+    await firestore.collection(cartCollection).doc().set({
+      'title': title,
+      'img': img,
+      'sellername': sellername,
+      'color': clor,
+      'qty': qty,
+      'tPrice': tPrice,
+      'added_by': currentUser!.uid,
+    }).catchError((error) {
+      Get.snackbar("Error!", error.toString());
+    });
   }
 }

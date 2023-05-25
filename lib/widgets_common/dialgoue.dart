@@ -18,8 +18,8 @@ Widget exitDialouge(context) {
             buttonColor: redColor,
             textcolor: whiteColor,
             title: "Yes",
-            onPressed: () {
-              SystemNavigator.pop();
+            onPressed: () async {
+              await SystemNavigator.pop();
             },
           ),
           customButton(

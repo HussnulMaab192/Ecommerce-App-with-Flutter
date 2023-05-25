@@ -341,7 +341,16 @@ class ItemDetails extends StatelessWidget {
             width: double.infinity,
             height: 60,
             child: customButton(
-                onPressed: () {},
+                onPressed: () {
+                  controler.addToCart(
+                      clor: data["p_colors"][controler.colorIndex.value],
+                      img: data["p_imgs"][0],
+                      qty: controler.qty.value,
+                      sellername: data["p_seller"],
+                      title: data["p_name"],
+                      tPrice: controler.totalPrice.value);
+                  Get.snackbar("Message", "Added to Cart");
+                },
                 buttonColor: redColor,
                 textcolor: whiteColor,
                 title: "Add to Cart"),
