@@ -7,6 +7,8 @@ import 'package:flutter_amazon/widgets_common/custom_button.dart';
 import 'package:flutter_amazon/widgets_common/responsive_height.dart';
 import 'package:get/get.dart';
 
+import '../chat_screen/chat_screen.dart';
+
 class ItemDetails extends StatelessWidget {
   String title;
   final dynamic data;
@@ -114,7 +116,10 @@ class ItemDetails extends StatelessWidget {
                         const CircleAvatar(
                           backgroundColor: whiteColor,
                           child: Icon(Icons.message_outlined),
-                        ),
+                        ).onTap(() {
+                          Get.to(() => const ChatScreen(),
+                              arguments: [data['p_seller'], data['vendor_id']]);
+                        }),
                       ],
                     )
                         .box
