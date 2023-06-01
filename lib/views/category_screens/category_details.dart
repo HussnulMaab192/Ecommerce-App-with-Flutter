@@ -116,6 +116,7 @@ class CategoriesDetails extends StatelessWidget {
                                 .padding(const EdgeInsets.all(12))
                                 .make()
                                 .onTap(() {
+                              controller.chekWishList(data[index]);
                               Get.to(ItemDetails(
                                 data: data[index],
                                 title: "${data[index]['p_name']} ",

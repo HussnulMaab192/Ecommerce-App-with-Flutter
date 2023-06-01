@@ -69,3 +69,7 @@ const messages = "Messages";
 
 const loggedIn = "Logged In Successfully";
 const loggedOut = "Logged Out Successfully";
+
+const paypal = "PayPal";
+const stripe = "Stripe";
+const cashOnDelivery = "Cash On Delivery";

@@ -2,13 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_amazon/consts/consts.dart';
 import 'package:flutter_amazon/controllers/authController.dart';
 import 'package:flutter_amazon/lists.dart';
+import 'package:flutter_amazon/orders_screens/order_screen.dart';
 import 'package:flutter_amazon/views/profile_screens/edit_profile.dart';
+import 'package:flutter_amazon/views/wishList_screens/wishList_screens.dart';
 import 'package:flutter_amazon/widgets_common/bg_widget.dart';
 import 'package:flutter_amazon/widgets_common/responsive_height.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/profile_controller.dart';
 import '../../services/firestore.dart';
+import '../chat_screen/messaging.dart';
 import 'components/cart_details_button.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -160,6 +163,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           return ListTile(
+                            onTap: () {
+                              switch (index) {
+                                case 0:
+                                  Get.to(() => const OrdersScreen());
+                                  break;
+                                case 1:
+                                  Get.to(() => const WishList());
+                                  break;
+                                case 2:
+                                  Get.to(() => const MessageList());
+                                  break;
+                                default:
+                              }
+                            },
                             leading: Image.asset(
                               profileButtonIcons[index],
                               width: 22,

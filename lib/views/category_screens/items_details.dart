@@ -34,10 +34,19 @@ class ItemDetails extends StatelessWidget {
               icon: const Icon(
                 Icons.share,
               )),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.favorite_border_outlined,
+          Obx(
+            () => IconButton(
+              onPressed: () {
+                if (controler.isFav.value) {
+                  controler.removeFromWishList(data.id);
+                } else {
+                  controler.addToWishList(data.id);
+                }
+              },
+              icon: Icon(
+                Icons.favorite_outlined,
+                color: controler.isFav.value ? redColor : darkFontGrey,
+              ),
             ),
           )
         ],
@@ -348,6 +357,7 @@ class ItemDetails extends StatelessWidget {
             child: customButton(
                 onPressed: () {
                   controler.addToCart(
+                      vendorId: data["vendor_id"],
                       clor: data["p_colors"][controler.colorIndex.value],
                       img: data["p_imgs"][0],
                       qty: controler.qty.value,

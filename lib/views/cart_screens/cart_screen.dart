@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_amazon/views/cart_screens/shipping_screen.dart';
+import 'package:get/get.dart';
+
 import 'package:flutter_amazon/consts/consts.dart';
+
 import 'package:flutter_amazon/widgets_common/custom_button.dart';
 import 'package:flutter_amazon/widgets_common/responsive_height.dart';
-import 'package:get/get.dart';
 
 import '../../controllers/cartController.dart';
 import '../../services/firestore.dart';
@@ -19,6 +22,16 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     var controller = Get.put(CartController());
     return Scaffold(
+        bottomNavigationBar: SizedBox(
+          height: 45,
+          child: customButton(
+              onPressed: () {
+                Get.to(() => const ShippingDetails());
+              },
+              buttonColor: redColor,
+              textcolor: whiteColor,
+              title: "Proceed To Shipping"),
+        ),
         backgroundColor: whiteColor,
         appBar: AppBar(
           backgroundColor: whiteColor,
@@ -58,6 +71,7 @@ class _CartScreenState extends State<CartScreen> {
               } else {
                 var data = snapshot.data!.docs;
                 controller.calculate(data);
+                controller.productSnapshot = data;
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -121,14 +135,6 @@ class _CartScreenState extends State<CartScreen> {
                           .roundedSM
                           .make(),
                       myCommonheight(0.01),
-                      SizedBox(
-                        width: context.screenWidth - 60,
-                        child: customButton(
-                            onPressed: () {},
-                            buttonColor: redColor,
-                            textcolor: whiteColor,
-                            title: "Proceed To Shipping"),
-                      )
                     ],
                   ),
                 );

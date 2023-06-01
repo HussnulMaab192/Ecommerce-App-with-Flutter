@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../consts/consts.dart';
 import '../../services/firestore.dart';
 
-class MessageList extends StatelessWidget {
-  const MessageList({super.key});
+class WishList extends StatelessWidget {
+  const WishList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +13,14 @@ class MessageList extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: whiteColor,
           automaticallyImplyLeading: false,
-          title: "My Messages"
+          title: "My Wish List"
               .text
               .color(darkFontGrey)
               .fontFamily(semibold)
               .make(),
         ),
         body: StreamBuilder(
-            stream: FirestoreServices.getAllMessages(),
+            stream: FirestoreServices.getWishList(),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(
@@ -33,7 +33,7 @@ class MessageList extends StatelessWidget {
               if (snapshot.data!.docs.isEmpty) {
                 return const Center(
                     child: Text(
-                  'No Message Yet',
+                  'No orders Yet',
                   style: TextStyle(
                       color: redColor, fontFamily: bold, fontSize: 28),
                 ));
