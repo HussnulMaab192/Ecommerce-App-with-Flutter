@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_amazon/consts/consts.dart';
+import 'package:flutter_amazon/orders_screens/orders_details.dart';
+import 'package:get/get.dart';
 
 import '../services/firestore.dart';
 
@@ -37,33 +39,41 @@ class OrdersScreen extends StatelessWidget {
               } else {
                 var data = snapshot.data!.docs;
 
-                return Container();
-
-                // ListView.builder(
-                //   itemCount: data.length,
-                //   itemBuilder: (context, index) {
-                //     return ListTile(
-                //       title: data[index]['order_code']
-                //           .toString()
-                //           .text
-                //           .color(redColor)
-                //           .fontFamily(semibold)
-                //           .make(),
-                //       subtitle: data[index]['total_amount']
-                //           .toString()
-                //           .numCurrency
-                //           .text
-                //           .fontFamily(bold)
-                //           .make(),
-                //       trailing: IconButton(
-                //           onPressed: () {},
-                //           icon: const Icon(
-                //             Icons.arrow_forward_ios_rounded,
-                //             color: darkFontGrey,
-                //           )),
-                //     );
-                //   },
-                // );
+                return ListView.builder(
+                  itemCount: data.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      leading: "${index + 1}"
+                          .text
+                          .fontFamily(bold)
+                          .color(redColor)
+                          .make(),
+                      title: data[index]['order_code']
+                          .toString()
+                          .text
+                          .color(redColor)
+                          .fontFamily(semibold)
+                          .make(),
+                      subtitle: data[index]['total_amount']
+                          .toString()
+                          .numCurrency
+                          .text
+                          .fontFamily(bold)
+                          .make(),
+                      trailing: IconButton(
+                        onPressed: () {
+                          Get.to(() => OrdersDetails(
+                                data: data[index],
+                              ));
+                        },
+                        icon: const Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          color: darkFontGrey,
+                        ),
+                      ),
+                    );
+                  },
+                );
               }
             }));
   }
