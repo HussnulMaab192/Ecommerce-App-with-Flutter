@@ -56,11 +56,5 @@ To get started with Emart, follow these steps:
 
 Enjoy the ultimate shopping experience with Emart!
 
-## Contributing
 
-We welcome contributions from the community. If you'd like to contribute to the development of Emart, please follow our [Contribution Guidelines](CONTRIBUTING.md).
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
